@@ -1,0 +1,22 @@
+
+#server port
+server:
+  port: 3333
+
+
+# API GATEWAY ROuTing properties
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: welcome-api
+        uri: lb://WELCOME-API
+        predicates:
+        - Path=/welcome
+      - id: greet-api
+        uri: lb://GREET-API
+        predicates:
+          - Path=/greet
+
+  application:
+    name: CLOUD-API-GATEWAY
